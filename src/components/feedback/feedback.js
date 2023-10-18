@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-const FeedbackButtons = ({ options, onLeaveFeedback }) => {
+const FeedbackOptions = ({ options, onLeaveFeedback }) => {
   return (
     <div>
       <h2>Please leave feedback</h2>
@@ -39,14 +39,14 @@ const Statistics = ({
       </p>
       <p>
         Positive feedback:
-        <span className="vote-number"> {positivePercentage.toFixed(0)}%</span>
+        <span className="vote-number"> {positivePercentage}%</span>
       </p>
     </>
   );
 };
 class Feedback extends Component {
   state = {
-    good: this.props.good,
+    good: 0,
     neutral: 0,
     bad: 0,
     positive: 0,
@@ -60,12 +60,25 @@ class Feedback extends Component {
     }));
   };
 
+  changeTotalFeedback = () =>
+    this.state.good + this.state.bad + this.state.neutral;
+
+  changePositiveFeedback = () => {
+    return (
+      100 *
+      (this.state.good /
+        (this.state.good + this.state.bad + this.state.neutral))
+    ).toFixed(0);
+  };
+
   render() {
-    const { good, neutral, bad, totalFeedback, positivePercentage } =
-      this.state;
+    const { good, neutral, bad } = this.state;
+    const totalFeedbackCount = this.changeTotalFeedback();
+    const positiveFeedbackCount = this.changePositiveFeedback();
+
     return (
       <>
-        <FeedbackButtons
+        <FeedbackOptions
           options={['good', 'neutral', 'bad']}
           onLeaveFeedback={this.changeVote}
         />
@@ -74,8 +87,8 @@ class Feedback extends Component {
           good={good}
           neutral={neutral}
           bad={bad}
-          totalFeedback={totalFeedback}
-          positivePercentage={positivePercentage}
+          totalFeedback={totalFeedbackCount}
+          positivePercentage={positiveFeedbackCount}
         />
       </>
     );
