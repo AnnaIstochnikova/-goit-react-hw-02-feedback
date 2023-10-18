@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-//import '../';
-
 class Feedback extends Component {
   state = {
     good: 0,
@@ -32,23 +30,29 @@ class Feedback extends Component {
     return (
       <>
         <h2>Please leave feedback</h2>
-        <button
-          type="button"
-          className="btn--good"
-          onClick={this.changeVoteGood}
-        >
-          Good
-        </button>
-        <button
-          type="button"
-          className="btn--neutral"
-          onClick={this.changeVoteNeutral}
-        >
-          Neutral
-        </button>
-        <button type="button" className="btn--bad" onClick={this.changeVoteBad}>
-          Bad
-        </button>
+        <div>
+          <button
+            type="button"
+            className="btn--good"
+            onClick={this.changeVoteGood}
+          >
+            Good
+          </button>
+          <button
+            type="button"
+            className="btn--neutral"
+            onClick={this.changeVoteNeutral}
+          >
+            Neutral
+          </button>
+          <button
+            type="button"
+            className="btn--bad"
+            onClick={this.changeVoteBad}
+          >
+            Bad
+          </button>
+        </div>
         <h2>Statistics</h2>
         <p>Good:{this.state.good}</p>
         <p>Neutral:{this.state.neutral}</p>
