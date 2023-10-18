@@ -1,5 +1,4 @@
-import PropTypes from 'prop-types';
-import Feedback from './JSX/feedback';
+import Feedback from './feedback/feedback';
 
 export const App = () => {
   return (
