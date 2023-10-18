@@ -6,23 +6,42 @@ class Feedback extends Component {
     good: 0,
     neutral: 0,
     bad: 0,
+    positive: 0,
   };
 
   changeVoteGood = () => {
     this.setState(prevState => {
-      return { good: prevState.good + 1 };
+      return {
+        good: prevState.good + 1,
+        positive:
+          100 *
+          ((prevState.good + 1 + prevState.bad - prevState.neutral) /
+            (prevState.good + 1 + prevState.bad + prevState.neutral)),
+      };
     });
   };
 
   changeVoteNeutral = () => {
     this.setState(prevState => {
-      return { neutral: prevState.neutral + 1 };
+      return {
+        neutral: prevState.neutral + 1,
+        positive:
+          100 *
+          ((this.state.good + prevState.bad - prevState.neutral + 1) /
+            (this.state.good + prevState.bad + prevState.neutral + 1)),
+      };
     });
   };
 
   changeVoteBad = () => {
     this.setState(prevState => {
-      return { bad: prevState.bad + 1 };
+      return {
+        bad: prevState.bad + 1,
+        positive:
+          100 *
+          ((this.state.good + 1 + prevState.bad - this.state.neutral) /
+            (this.state.good + 1 + prevState.bad + this.state.neutral)),
+      };
     });
   };
 
@@ -54,9 +73,29 @@ class Feedback extends Component {
           </button>
         </div>
         <h2>Statistics</h2>
-        <p>Good:{this.state.good}</p>
-        <p>Neutral:{this.state.neutral}</p>
-        <p>Bad:{this.state.bad}</p>
+        <p>
+          Good:<span className="vote-number"> {this.state.good}</span>
+        </p>
+        <p>
+          Neutral:<span className="vote-number"> {this.state.neutral}</span>
+        </p>
+        <p>
+          Bad:<span className="vote-number"> {this.state.bad}</span>
+        </p>
+        <p>
+          Total:
+          <span className="vote-number">
+            {' '}
+            {this.state.bad + this.state.neutral + this.state.good}
+          </span>
+        </p>
+        <p>
+          Positive feedback:
+          <span className="vote-number">
+            {' '}
+            {this.state.positive.toFixed(0)}%
+          </span>
+        </p>
       </>
     );
   }

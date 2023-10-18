@@ -35,3 +35,8 @@ button {
 button:hover {
   background-color: #149eca;
 }
+
+.vote-number {
+  color: white;
+  font-weight: 700;
+}
