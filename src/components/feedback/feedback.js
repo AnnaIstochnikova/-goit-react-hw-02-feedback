@@ -14,6 +14,10 @@ const FeedbackOptions = ({ options, onLeaveFeedback }) => {
   );
 };
 
+const Notification = ({ message }) => {
+  return <div>{message}</div>;
+};
+
 const Statistics = ({
   good,
   neutral,
@@ -52,11 +56,13 @@ class Feedback extends Component {
     positive: 0,
     totalFeedback: 0,
     positivePercentage: 0,
+    showStatistics: false,
   };
 
   changeVote = type => {
     this.setState(prevState => ({
       [type]: prevState[type] + 1,
+      showStatistics: true,
     }));
   };
 
@@ -72,7 +78,7 @@ class Feedback extends Component {
   };
 
   render() {
-    const { good, neutral, bad } = this.state;
+    const { good, neutral, bad, showStatistics } = this.state;
     const totalFeedbackCount = this.changeTotalFeedback();
     const positiveFeedbackCount = this.changePositiveFeedback();
 
@@ -82,14 +88,17 @@ class Feedback extends Component {
           options={['good', 'neutral', 'bad']}
           onLeaveFeedback={this.changeVote}
         />
+        {showStatistics || <Notification message="There is no feedback" />}
 
-        <Statistics
-          good={good}
-          neutral={neutral}
-          bad={bad}
-          totalFeedback={totalFeedbackCount}
-          positivePercentage={positiveFeedbackCount}
-        />
+        {showStatistics && (
+          <Statistics
+            good={good}
+            neutral={neutral}
+            bad={bad}
+            totalFeedback={totalFeedbackCount}
+            positivePercentage={positiveFeedbackCount}
+          />
+        )}
       </>
     );
   }
