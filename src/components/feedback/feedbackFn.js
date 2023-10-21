@@ -28,7 +28,7 @@ class Feedback extends Component {
     this.state.good + this.state.bad + this.state.neutral;
 
   changePositiveFeedback = () => {
-    return (
+    return +(
       100 *
       (this.state.good /
         (this.state.good + this.state.bad + this.state.neutral))
