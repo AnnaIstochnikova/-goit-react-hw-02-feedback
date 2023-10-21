@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 export const Section = ({ title, children }) => (
   <section>
     <h2>{title}</h2>
@@ -49,4 +51,25 @@ export const Statistics = ({
       </p>
     </>
   );
+};
+
+Section.propTypes = {
+  h2: PropTypes.string,
+};
+
+FeedbackOptions.propTypes = {
+  option: PropTypes.string,
+  onLeaveFeedback: PropTypes.func,
+};
+
+Notification.propTypes = {
+  message: PropTypes.string,
+};
+
+Statistics.propTypes = {
+  good: PropTypes.number,
+  neutral: PropTypes.number,
+  bad: PropTypes.number,
+  totalFeedback: PropTypes.number,
+  positivePercentage: PropTypes.number,
 };
