@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
 
-import { FeedbackOptions, Notification, Statistics } from './feedbackParts';
+import {
+  Section,
+  FeedbackOptions,
+  Notification,
+  Statistics,
+} from './feedbackParts';
 class Feedback extends Component {
   state = {
     good: 0,
@@ -38,6 +43,7 @@ class Feedback extends Component {
 
     return (
       <>
+        <Section title="Please leave feedback" />
         <FeedbackOptions
           options={['good', 'neutral', 'bad']}
           onLeaveFeedback={this.changeVote}
@@ -46,13 +52,16 @@ class Feedback extends Component {
         {showStatistics || <Notification message="There is no feedback" />}
 
         {showStatistics && (
-          <Statistics
-            good={good}
-            neutral={neutral}
-            bad={bad}
-            totalFeedback={totalFeedbackCount}
-            positivePercentage={positiveFeedbackCount}
-          />
+          <>
+            <Section title="Statistics" />
+            <Statistics
+              good={good}
+              neutral={neutral}
+              bad={bad}
+              totalFeedback={totalFeedbackCount}
+              positivePercentage={positiveFeedbackCount}
+            />
+          </>
         )}
       </>
     );

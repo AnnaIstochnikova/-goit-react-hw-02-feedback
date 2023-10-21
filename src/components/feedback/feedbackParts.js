@@ -1,13 +1,19 @@
+export const Section = ({ title, children }) => (
+  <section>
+    <h2>{title}</h2>
+    {children}
+  </section>
+);
+
 export const FeedbackOptions = ({ options, onLeaveFeedback }) => {
   return (
-    <div>
-      <h2>Please leave feedback</h2>
+    <>
       {options.map(option => (
         <button key={option} onClick={() => onLeaveFeedback(option)}>
           {option}
         </button>
       ))}
-    </div>
+    </>
   );
 };
 
@@ -24,7 +30,6 @@ export const Statistics = ({
 }) => {
   return (
     <>
-      <h2>Statistics</h2>
       <p>
         Good:<span className="vote-number"> {good}</span>
       </p>
