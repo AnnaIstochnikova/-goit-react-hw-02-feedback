@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 
-import {
-  Section,
-  FeedbackOptions,
-  Notification,
-  Statistics,
-} from './feedbackParts';
+import { Section } from './section/section';
+import { Statistics } from './statistics/statistics';
+import { Notification } from './notification/notification';
+import { FeedbackOptions } from './feedbackOptions/feedbackOptions';
+
 class Feedback extends Component {
   state = {
     good: 0,
@@ -47,9 +46,7 @@ class Feedback extends Component {
           options={['good', 'neutral', 'bad']}
           onLeaveFeedback={this.changeVote}
         />
-
         {showStatistics || <Notification message="There is no feedback" />}
-
         {showStatistics && (
           <>
             <Section title="Statistics" />

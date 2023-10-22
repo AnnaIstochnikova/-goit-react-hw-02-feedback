@@ -1,28 +1,5 @@
 import PropTypes from 'prop-types';
 
-export const Section = ({ title, children }) => (
-  <section>
-    <h2>{title}</h2>
-    {children}
-  </section>
-);
-
-export const FeedbackOptions = ({ options, onLeaveFeedback }) => {
-  return (
-    <>
-      {options.map(option => (
-        <button key={option} onClick={() => onLeaveFeedback(option)}>
-          {option}
-        </button>
-      ))}
-    </>
-  );
-};
-
-export const Notification = ({ message }) => {
-  return <div>{message}</div>;
-};
-
 export const Statistics = ({
   good,
   neutral,
@@ -51,19 +28,6 @@ export const Statistics = ({
       </p>
     </>
   );
-};
-
-Section.propTypes = {
-  h2: PropTypes.string,
-};
-
-FeedbackOptions.propTypes = {
-  option: PropTypes.string,
-  onLeaveFeedback: PropTypes.func,
-};
-
-Notification.propTypes = {
-  message: PropTypes.string,
 };
 
 Statistics.propTypes = {
