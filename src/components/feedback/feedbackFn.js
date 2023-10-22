@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
 import { Section } from './section/section';
@@ -63,5 +64,20 @@ class Feedback extends Component {
     );
   }
 }
+
+Feedback.propTypes = {
+  state: PropTypes.shape({
+    good: PropTypes.number,
+    neutral: PropTypes.number,
+    bad: PropTypes.number,
+    totalFeedback: PropTypes.number,
+    positivePercentage: PropTypes.number,
+  }),
+  changeVote: PropTypes.func,
+  changeTotalFeedback: PropTypes.func,
+  changePositiveFeedback: PropTypes.func,
+  options: PropTypes.object,
+  title: PropTypes.string,
+};
 
 export default Feedback;
