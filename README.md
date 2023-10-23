@@ -9,11 +9,11 @@ To run this project locally, follow these steps:
 
 1. Clone the repository to your local machine using Git:
 
-git clone https://github.com/annaistochnikova/goit-react-hw-02-phonebook.git
+git clone https://github.com/annaistochnikova/goit-react-hw-02-feedback.git
 
 2. Navigate to the project directory:
 
-cd goit-react-hw-02-phonebook
+cd goit-react-hw-02-feedback
 
 3. Install the project dependencies using npm:
 
@@ -23,7 +23,7 @@ npm install
 
 npm start
 
-5. Open your web browser and go to http://localhost:3000 to use the phonebook application.
+5. Open your web browser and go to http://localhost:3000 to use the feedback application.
 
 ## Screenshot
 Here is a screenshot of the phonebook application:
